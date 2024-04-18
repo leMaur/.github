@@ -1,4 +1,4 @@
-name: check code styling
+name: code styling
 
 on:
   workflow_call:
@@ -8,7 +8,7 @@ on:
         type: string
 
 jobs:
-  lint:
+  pint:
     if: github.actor != 'dependabot[bot]'
     
     runs-on: ubuntu-latest
