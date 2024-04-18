@@ -11,7 +11,7 @@ on:
         type: string
 
 jobs:
-  lint:
+  rector:
     if: github.actor != 'dependabot[bot]'
     
     runs-on: ubuntu-latest
