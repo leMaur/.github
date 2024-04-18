@@ -28,9 +28,29 @@ jobs:
           php-version: ${{ inputs.php }}
           extensions: json, dom, curl, libxml, mbstring
           coverage: none
+      
+      - name: Composer Cache
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
 
-      - name: Install Rector
-        run: composer global require rector/rector driftingly/rector-laravel
+      - name: Rector Cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/rector
+          key: rector-${{ github.run_id }}
+          restore-keys: rector-
+
+      - run: mkdir -p /tmp/rector
+
+      - name: Install Composer Dependencies
+        run: composer install --no-ansi --no-interaction --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Prepare Application
+        run: |
+          cp .env.example .env
+          php artisan key:generate
 
       - name: Run Rector
-        run: rector process --config=${{ inputs.config_file }} --dry-run
+        run: php vendor/bin/rector process --config=${{ inputs.config_file }} --dry-run --output-format=OUTPUT-FORMAT
