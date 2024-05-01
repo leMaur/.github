@@ -7,9 +7,9 @@ on:
         default: "8.3"
         type: string
       github-token:
+        default: ${{ github.token }}
         type: string
         description: 'The GITHUB_TOKEN secret'
-        default: ${{ github.token }}
 
 jobs:
   pint:
