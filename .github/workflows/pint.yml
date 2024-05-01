@@ -6,10 +6,6 @@ on:
       php:
         default: "8.3"
         type: string
-      github-token:
-        default: ${{ github.token }}
-        type: string
-        description: 'The GITHUB_TOKEN secret'
 
 jobs:
   pint:
@@ -22,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ inputs.github-token }}
+          token: ${{ github.token }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
