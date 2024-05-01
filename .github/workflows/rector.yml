@@ -53,4 +53,4 @@ jobs:
           php artisan key:generate
 
       - name: Run Rector
-        run: php vendor/bin/rector process --config=${{ inputs.config_file }} --dry-run --output-format=OUTPUT-FORMAT
+        run: php vendor/bin/rector process --config=${{ inputs.config_file }} --dry-run
