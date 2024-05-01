@@ -8,8 +8,8 @@ on:
         type: string
     secrets:
       github-token:
-        default: ${{ github.token }}
-        type: string
+        description: 'The GITHUB_TOKEN secret'
+        required: true
 
 jobs:
   pint:
