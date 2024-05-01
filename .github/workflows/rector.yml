@@ -10,9 +10,9 @@ on:
         default: "rector.php"
         type: string
       github-token:
+        default: ${{ github.token }}
         type: string
         description: 'The GITHUB_TOKEN secret'
-        default: ${{ github.token }}
 
 jobs:
   rector:
