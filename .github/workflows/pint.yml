@@ -7,7 +7,7 @@ on:
         default: "8.3"
         type: string
     secrets:
-      github-token:
+      GITHUB_TOKEN:
         description: 'The GITHUB_TOKEN secret'
         required: true
 
