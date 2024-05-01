@@ -10,7 +10,7 @@ on:
         default: "rector.php"
         type: string
     secrets:
-      GITHUB_TOKEN:
+      TOKEN:
         description: 'The GITHUB_TOKEN secret'
         required: true
 
@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
